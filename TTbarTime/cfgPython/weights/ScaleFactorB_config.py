@@ -9,8 +9,8 @@ year = getHeppyOption('year', '2017' )
 btagger = getHeppyOption('btagger', 'DeepCSV' )
 
 from CMGTools.RootTools.samples.ComponentCreator import ComponentCreator
-#ComponentCreator.useLyonAAA = True
-ComponentCreator.useAAA = True
+ComponentCreator.useLyonAAA = True
+#ComponentCreator.useAAA = True
 
 ################################################################################
 # Analyzers 
@@ -34,7 +34,7 @@ vertex = cfg.Analyzer(VertexAnalyzer,
 ################################################################################
 if (year == '2016'):
     from CMGTools.TTbarTime.proto.samples.summer16.ttbar2016 import mc_ttbar
-else:
+elif(year == '2017'):
     #from CMGTools.TTbarTime.proto.samples.fall17.ttbar2017 import mc_ttbar_test as mc_ttbar
     from CMGTools.TTbarTime.proto.samples.fall17.ttbar2017_update import mc_ttbar as mc_ttbar
 
@@ -49,13 +49,15 @@ selectedComponents = mc_ttbar
 if(year == '2016'):    
     import CMGTools.TTbarTime.proto.samples.summer16.ttbar2016 as backgrounds_forindex
 elif(year == '2017'):
-    import CMGTools.TTbarTime.proto.samples.fall17.ttbar2017 as backgrounds_forindex    
+    import CMGTools.TTbarTime.proto.samples.fall17.ttbar2017_update as backgrounds_forindex    
 from CMGTools.H2TauTau.proto.samples.component_index import ComponentIndex
 bindex = ComponentIndex(backgrounds_forindex)
 
 if test:
     cache = True
-    comp = bindex.glob('signal_MC_dilep')[0]
+    comp = bindex.glob('MC_a_dilep')[0]
+                        #MC_a_dilep
+                        #'MC_y_DY_50'
     selectedComponents = [comp]
     comp.files = comp.files[:1]
     comp.splitFactor = 1
