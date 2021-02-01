@@ -26,19 +26,6 @@ class BTagSFARC(object):
                               'src/CMGTools/TTbarTime/data/2016/btag/btag_efficiency_CSVv2.root'])
                 calib = ROOT.BTagCalibration("CSVv2", os.path.expandvars("$CMSSW_BASE/src/CMGTools/TTbarTime/data/CSVv2_94XSF_V2_B_F.csv"))
 
-        else:
-            if tagger == 'DeepCSV':
-                rootfname = '/'.join([os.environ["CMSSW_BASE"],
-                                      'src/CMGTools/TTbarTime/data/2017/btag/btag_efficiency_DeepCSV.root'])
-                calib = ROOT.BTagCalibration("DeepCSV", os.path.expandvars("$CMSSW_BASE/src/CMGTools/TTbarTime/data/DeepCSV_94XSF_V5_B_F.csv"))
-            if tagger == 'DeepJet':
-                rootfname = '/'.join([os.environ["CMSSW_BASE"],
-                                      'src/CMGTools/TTbarTime/data/2017/btag/btag_efficiency_CSVv2.root'])
-                calib = ROOT.BTagCalibration("DeepFlavour", os.path.expandvars("$CMSSW_BASE/src/CMGTools/TTbarTime/data/DeepFlavour_94XSF_V4_B_F.csv"))
-            if tagger == 'CSVv2':
-                rootfname = '/'.join([os.environ["CMSSW_BASE"],
-                                      'src/CMGTools/TTbarTime/data/2017/btag/btag_efficiency_CSVv2.root'])
-                calib = ROOT.BTagCalibration("CSVv2", os.path.expandvars("$CMSSW_BASE/src/CMGTools/TTbarTime/data/CSVv2_94XSF_V2_B_F.csv"))
             #tagging_efficiencies_march2018_btageff-all_samp-inc-DeepCSV_medium.root
 
         self.mc_eff_file = TFile(rootfname)
