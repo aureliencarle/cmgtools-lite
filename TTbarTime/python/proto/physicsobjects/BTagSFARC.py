@@ -12,21 +12,6 @@ class BTagSFARC(object):
     def __init__ (self, seed, wp='loose', year= '2017',tagger = 'DeepCSV', measurement='central') :
         self.randm = TRandom3(seed)
 
-        if year == '2016' :
-            if tagger == 'DeepCSV':
-                rootfname = '/'.join([os.environ["CMSSW_BASE"],
-                                      'src/CMGTools/TTbarTime/data/2016/btag/btag_efficiency_DeepCSV.root'])
-                calib = ROOT.BTagCalibration("CSVv2", os.path.expandvars("$CMSSW_BASE/src/CMGTools/TTbarTime/data/2016/btag/DeepCSV_2016LegacySF_V1.csv"))
-            if tagger == 'DeepJet':
-                rootfname = '/'.join([os.environ["CMSSW_BASE"],
-                              'src/CMGTools/TTbarTime/data/2016/btag/btag_efficiency_CSVv2.root'])
-                calib = ROOT.BTagCalibration("CSVv2", os.path.expandvars("$CMSSW_BASE/src/CMGTools/TTbarTime/data/2016/btag/DeepJet_2016LegacySF_V1.csv"))
-            if tagger == 'CSVv2':
-                rootfname = '/'.join([os.environ["CMSSW_BASE"],
-                              'src/CMGTools/TTbarTime/data/2016/btag/btag_efficiency_CSVv2.root'])
-                calib = ROOT.BTagCalibration("CSVv2", os.path.expandvars("$CMSSW_BASE/src/CMGTools/TTbarTime/data/CSVv2_94XSF_V2_B_F.csv"))
-
-            #tagging_efficiencies_march2018_btageff-all_samp-inc-DeepCSV_medium.root
 
         self.mc_eff_file = TFile(rootfname)
 
